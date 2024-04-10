@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="booking"
+            type="com.example.bookingchallenge.domain.Booking" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="16dp"
+        >
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:cardCornerRadius="16dp"
+            app:cardBackgroundColor="@color/cardview_dark_background"
+            app:cardPreventCornerOverlap="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            >
+            
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="8dp"
+                android:layout_marginBottom="8dp">
+
+                <TextView
+                    android:id="@+id/booking_id_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="6dp"
+                    android:text="@string/booking_id"
+                    android:textColor="@color/lightGrey"
+                    app:layout_constraintHorizontal_bias="0.45"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/booking_id_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:bookingID="@{booking.bookingid}"
+                    android:textColor="@color/lightGrey"
+                    tools:text="736"
+                    android:layout_margin="6dp"
+                    app:layout_constraintStart_toEndOf="@id/booking_id_title"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/firstname_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/first_name"
+                    android:textColor="@color/lightGrey"
+                    android:textStyle="bold"
+                    android:layout_margin="6dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/booking_id_title" />
+
+                <TextView
+                    android:id="@+id/firstname_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:bookingFirstName="@{booking.firstname}"
+                    tools:text="Jim"
+                    android:textColor="@color/lightGrey"
+                    android:layout_margin="6dp"
+                    app:layout_constraintStart_toEndOf="@id/firstname_title"
+                    app:layout_constraintTop_toBottomOf="@+id/booking_id_value" />
+
+                <TextView
+                    android:id="@+id/lastname_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/last_name"
+                    android:textStyle="bold"
+                    android:textColor="@color/lightGrey"
+                    android:layout_margin="6dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/firstname_title" />
+
+                <TextView
+                    android:id="@+id/lastname_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:bookingLastName="@{booking.lastname}"
+                    android:textColor="@color/lightGrey"
+                    tools:text="Brown"
+                    android:layout_margin="6dp"
+                    app:layout_constraintStart_toEndOf="@id/lastname_title"
+                    app:layout_constraintTop_toBottomOf="@id/firstname_value" />
+
+                <TextView
+                    android:id="@+id/total_price_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/total_price"
+                    android:textStyle="bold"
+                    android:textColor="@color/lightGrey"
+                    android:layout_margin="6dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/lastname_title" />
+
+                <TextView
+                    android:id="@+id/total_price_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:bookingTotalPrice="@{booking.totalprice}"
+                    tools:text="111"
+                    android:textColor="@color/lightGrey"
+                    android:layout_margin="6dp"
+                    app:layout_constraintStart_toEndOf="@id/total_price_title"
+                    app:layout_constraintTop_toBottomOf="@id/lastname_value" />
+
+                <TextView
+                    android:id="@+id/deposit_paid_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="6dp"
+                    android:paddingStart="6dp"
+                    android:textColor="@color/lightGrey"
+                    android:paddingEnd="1dp"
+                    android:text="@string/deposit_paid"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.75"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/booking_id_title" />
+
+                <TextView
+                    android:id="@+id/deposit_paid_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="6dp"
+                    android:textColor="@color/lightGrey"
+                    app:bookingDepositPaid="@{booking.depositpaid}"
+                    app:layout_constraintStart_toEndOf="@+id/deposit_paid_title"
+                    app:layout_constraintTop_toBottomOf="@+id/booking_id_title"
+                    tools:text="true" />
+
+                <TextView
+                    android:id="@+id/check_in_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="6dp"
+                    android:text="@string/check_in"
+                    android:textColor="@color/lightGrey"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@+id/deposit_paid_title"
+                    app:layout_constraintTop_toBottomOf="@id/deposit_paid_title" />
+
+                <TextView
+                    android:id="@+id/check_in_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:bookingCheckIn="@{booking.checkin}"
+                    tools:text="2024-04-01"
+                    android:textColor="@color/lightGrey"
+                    android:layout_margin="6dp"
+                    app:layout_constraintStart_toEndOf="@+id/check_in_title"
+                    app:layout_constraintTop_toBottomOf="@id/deposit_paid_value" />
+
+                <TextView
+                    android:id="@+id/check_out_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="6dp"
+                    android:text="@string/check_out"
+                    android:textColor="@color/lightGrey"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@+id/deposit_paid_title"
+                    app:layout_constraintTop_toBottomOf="@id/check_in_title" />
+
+                <TextView
+                    android:id="@+id/check_out_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:bookingCheckOut="@{booking.checkout}"
+                    tools:text="2024-05-01"
+                    android:textColor="@color/lightGrey"
+                    android:layout_margin="6dp"
+                    app:layout_constraintStart_toEndOf="@+id/check_out_title"
+                    app:layout_constraintTop_toBottomOf="@id/check_in_value" />
+
+                <TextView
+                    android:id="@+id/additional_needs_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="6dp"
+                    android:layout_marginTop="48dp"
+                    android:textColor="@color/lightGrey"
+                    android:text="@string/additional_needs"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/total_price_title" />
+
+                <TextView
+                    android:id="@+id/additional_needs_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/lightGrey"
+                    app:bookingAdditionalNeeds="@{booking.additionalneeds}"
+                    tools:text="Breakfast"
+                    android:layout_margin="6dp"
+                    app:layout_constraintStart_toEndOf="@+id/additional_needs_title"
+                    app:layout_constraintTop_toBottomOf="@id/total_price_value" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

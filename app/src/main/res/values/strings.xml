@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">BookingChallenge</string>
+    <string name="log_in">Log In</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="pending">Pending...</string>
+    <string name="new_booking">New Booking</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="total_price">Total Price</string>
+    <string name="deposit_paid">Deposit Paid</string>
+    <string name="check_in">Check In</string>
+    <string name="check_out">Check Out</string>
+    <string name="booking_id">Booking ID</string>
+    <string name="additional_needs">Additional Needs</string>
+    <string name="enter_first_name">Enter First Name</string>
+    <string name="enter_last_name">Enter Last Name</string>
+    <string name="breakfast">Breakfast</string>
+    <string name="launch">Launch</string>
+    <string name="dinner">Dinner</string>
+    <string name="validate">Validate</string>
+    <string name="dollar">($)</string>
+    <string name="log_out">Log Out</string>
+    <string name="confirm">Confirm</string>
+    <string name="cancel">Cancel</string>
+    <string name="yyyy_mm_dd">yyyy-MM-dd</string>
+</resources>

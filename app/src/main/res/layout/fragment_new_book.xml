@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.bookingchallenge.screens.newbook.NewBookViewModel" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/cardview_dark_background">
+
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:cardCornerRadius="24dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardPreventCornerOverlap="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        >
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingHorizontal="16dp"
+        android:theme="@style/Theme.BookingChallenge"
+        android:paddingVertical="8dp"
+        tools:context=".screens.newbook.NewBookFragment">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/new_booking_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/new_booking"
+            android:layout_margin="12dp"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/new_firstname_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/first_name"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/new_firstname_value"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/new_firstname_value" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/new_firstname_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginHorizontal="16dp"
+            android:enabled="@{!viewModel.readyToConfirm}"
+            android:onTextChanged="@{(text, start, before, count) -> viewModel.onFirstNameStateChanged(text)}"
+            android:background="@drawable/new_book_edittext_border"
+            android:hint="@string/enter_first_name"
+            android:textSize="16sp"
+            android:padding="4dp"
+            app:layout_constraintStart_toEndOf="@+id/new_firstname_title"
+            app:layout_constraintTop_toBottomOf="@id/new_booking_title"  />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/new_lastname_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/last_name"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/new_lastname_value"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/new_lastname_value" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/new_lastname_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginVertical="8dp"
+            android:enabled="@{!viewModel.readyToConfirm}"
+            android:onTextChanged="@{(text, start, before, count) -> viewModel.onLastNameStateChanged(text)}"
+            android:background="@drawable/new_book_edittext_border"
+            android:hint="@string/enter_last_name"
+            android:padding="4dp"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@+id/new_lastname_title"
+            app:layout_constraintTop_toBottomOf="@id/new_firstname_value" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/new_deposit_paid_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/deposit_paid"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/new_deposit_paid_value"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/new_deposit_paid_value" />
+
+        <CheckBox
+            android:id="@+id/new_deposit_paid_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:enabled="@{!viewModel.readyToConfirm}"
+            android:checked="@{viewModel.newBookingDepositState}"
+            android:onCheckedChanged="@{(buttonView, isChecked) -> viewModel.onDepositStateChanged(isChecked)}"
+            android:layout_marginHorizontal="16dp"
+            app:layout_constraintStart_toEndOf="@+id/new_deposit_paid_title"
+            app:layout_constraintTop_toBottomOf="@+id/new_lastname_value" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/new_check_in_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/check_in"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/new_check_in_value"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/new_check_in_value" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/new_check_in_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            app:newBookingDate="@{viewModel.newBookingCheckIn}"
+            tools:hint="@string/yyyy_mm_dd"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/new_check_out_value"
+            app:layout_constraintStart_toStartOf="@+id/new_check_out_value"
+            app:layout_constraintTop_toBottomOf="@id/new_deposit_paid_value" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/new_check_out_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/check_out"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/new_check_out_value"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/new_check_out_value" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/new_check_out_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginVertical="8dp"
+            app:newBookingDate="@{viewModel.newBookingCheckOut}"
+            tools:hint="@string/yyyy_mm_dd"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@+id/new_check_out_title"
+            app:layout_constraintTop_toBottomOf="@id/new_check_in_value" />
+
+        <ImageButton
+            android:id="@+id/date_picker_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:src="@drawable/baseline_date_range_24"
+            android:layout_marginHorizontal="16dp"
+            app:layout_constraintBottom_toBottomOf="@+id/new_check_out_value"
+            app:layout_constraintStart_toEndOf="@+id/new_check_out_value"
+            app:layout_constraintTop_toTopOf="@+id/new_check_in_value" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/new_additional_needs_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/additional_needs"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/new_check_Dinner"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/new_check_breakfast" />
+
+
+        <CheckBox
+            android:id="@+id/new_check_breakfast"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:enabled="@{!viewModel.readyToConfirm}"
+            android:checked="@{viewModel.newBookingBreakfastState}"
+            android:onCheckedChanged="@{(buttonView, isChecked) -> viewModel.onBreakfastChanged(isChecked)}"
+            android:text="@string/breakfast"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="16dp"
+            app:layout_constraintStart_toEndOf="@+id/new_additional_needs_title"
+            app:layout_constraintTop_toBottomOf="@+id/new_check_out_value" />
+
+        <CheckBox
+            android:id="@+id/new_check_Launch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:enabled="@{!viewModel.readyToConfirm}"
+            android:checked="@{viewModel.newBookingLaunchState}"
+            android:onCheckedChanged="@{(buttonView, isChecked) -> viewModel.onLaunchChanged(isChecked)}"
+            android:text="@string/launch"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:layout_marginStart="16dp"
+            app:layout_constraintStart_toEndOf="@+id/new_additional_needs_title"
+            app:layout_constraintTop_toBottomOf="@+id/new_check_breakfast" />
+
+        <CheckBox
+            android:id="@+id/new_check_Dinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:enabled="@{!viewModel.readyToConfirm}"
+            android:checked="@{viewModel.newBookingDinnerState}"
+            android:onCheckedChanged="@{(buttonView, isChecked) -> viewModel.onDinerStateChanged(isChecked)}"
+            android:text="@string/dinner"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:layout_marginStart="16dp"
+            app:layout_constraintStart_toEndOf="@+id/new_additional_needs_title"
+            app:layout_constraintTop_toBottomOf="@+id/new_check_Launch" />
+
+        <Button
+            android:id="@+id/validate_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/validate"
+            android:onClick="@{() -> viewModel.calculatePayments()}"
+            android:enabled="@{viewModel.readyToValidate}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/new_check_Dinner" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/new_total_price_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="16dp"
+            android:text="@string/total_price"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/validate_button" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/new_total_price_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginVertical="8dp"
+            app:newBookingTotalPayment="@{viewModel.newBookingPaymentState}"
+            tools:hint="@string/dollar"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/new_total_price_title"
+            app:layout_constraintStart_toEndOf="@+id/new_total_price_title"
+            app:layout_constraintTop_toTopOf="@+id/new_total_price_title" />
+
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+            android:id="@+id/new_booking_loading_state"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminate="true"
+            app:bookingsStateLoading="@{viewModel.newBookingState.loading}"
+            app:indicatorColor="@color/design_default_color_primary"
+            app:layout_constraintBottom_toTopOf="@id/cancel_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/new_total_price_value"
+            app:layout_constraintTop_toBottomOf="@id/new_check_Dinner" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/new_booking_error_state"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:padding="12dp"
+            app:bookingsStateError="@{viewModel.newBookingState.error}"
+            android:textStyle="italic|bold"
+            android:textColor="@color/red"
+            app:layout_constraintBottom_toTopOf="@id/cancel_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/new_total_price_value"
+            app:layout_constraintTop_toBottomOf="@id/new_check_Dinner" />
+
+        <Button
+            android:id="@+id/cancel_button"
+            style="@style/Widget.Material3.Button.TextButton.Dialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/cancel"
+            app:layout_constraintBottom_toBottomOf="@+id/edit_icon"
+            app:layout_constraintEnd_toStartOf="@id/confirm_button"
+            app:layout_constraintTop_toTopOf="@+id/edit_icon" />
+
+        <Button
+            android:id="@+id/confirm_button"
+            style="@style/Widget.Material3.Button.TextButton.Dialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:enabled="@{viewModel.readyToConfirm}"
+            android:onClick="@{() -> viewModel.addNewBooking()}"
+            android:text="@string/confirm"
+            app:layout_constraintBottom_toBottomOf="@+id/edit_icon"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/edit_icon" />
+
+        <ImageButton
+            android:id="@+id/edit_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            app:newEditButton="@{viewModel.readyToConfirm}"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="12dp"
+            android:background="@color/white"
+            android:onClick="@{() -> viewModel.onEditNewBooking()}"
+            android:src="@android:drawable/ic_menu_edit"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/new_total_price_title" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    </FrameLayout>
+</layout>
